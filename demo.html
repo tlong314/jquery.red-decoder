@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8" />
+<title>reddecoder.js Demo</title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui' />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<style>
+* {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	background: #333;
+}
+
+#redEncoder {
+	border: 1px solid black;
+	background: white;
+}
+
+#redDecoder:active {
+	cursor: none;
+}
+</style>
+</head>
+<body>
+<canvas id="redEncoder" width="400" height="300">This browser does not support HTML5 canvas elements.</canvas>
+
+<div id="redDecoder"></div>
+<script src="jquery.min.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="jquery.reddecoder.min.js"></script>
+<script>
+
+window.onload = function init() {
+	if(typeof jQuery === "undefined") {
+		alert("You need jQuery and jQuery UI in order to use this plugin. Please \n download those scripts and add them to this directly to see the\n demo page in action.");
+	}
+
+	$("#redDecoder").redDecoder({
+		canvases: [
+			{
+				element: "#redEncoder",
+				messages: [
+					{
+						text: "You found me!"
+					}
+				]
+			}
+		]
+	});
+};
+</script>
+</body>
+</html>
