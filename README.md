@@ -11,7 +11,7 @@ Include an external script reference to the jquery.reddecoder.js file (or the jq
 
 You can define which canvas element will hide your decoded message, by calling the redEncoder method:
 
-`$("#messageCanvasId").redDecoder();`
+`$("#messageCanvasId").redEncoder();`
 
 By passing a "canvases" property into the options for redDecoder, you can define the canvas elements in the same call that defines the glass:
 
@@ -71,6 +71,10 @@ position {Object} - An object with two properties: x, which points to the desire
 ### redEncoder Options
 
 The options object for the redEncoder method has the same optional key-value pairs as in each object from the `canvases` array defined in the redDecoder options above.
+
+## Demo
+
+To see a working demo, download this repository, and then be sure to copy or download jQuery and jQuery UI to the same directory. The script will then be applied when you open demo.html.
 
 ##License
 
