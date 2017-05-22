@@ -1,5 +1,5 @@
 
-# redDecoder
+# jQuery.redDecoder
 
 A jQuery plugin for creating hidden messages and red decoder glasses out of webpage elements. Requires jQuery, jQuery UI, and a browser that supports HTML5 canvas (or the necessary fallback, like flashcanvas).
 
