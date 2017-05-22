@@ -1,11 +1,11 @@
 
-#redDecoder
+# redDecoder
 
 A jQuery plugin for creating hidden messages and red decoder glasses out of webpage elements. Requires jQuery, jQuery UI, and a browser that supports HTML5 canvas (or the necessary fallback, like flashcanvas).
 
-##Usage
+## Usage
 
-Include an external script reference to the jquery.reddecoder.js file (or the jquery.reddecoder.min.js file) in your page, after referencing jQuery and jQuery UI scripts. Then in your own script for the page, you can use a page element to create a red decoder glass:
+Include an external script reference to the jquery.red-decoder.js file (or the minified jquery.red-decoder.min.js file) in your page, after referencing jQuery and jQuery UI scripts. Then in your own script for the page, you can use a page element to create a red decoder glass:
 
 `$("#pageElementId").redDecoder();`
 
@@ -25,9 +25,9 @@ $("#pageElementId").redDecoder({
 });
 ```
 
-##Options
+## Options
 
-###redDecoder Options
+### redDecoder Options
 
 glasses {Object | Array} - An array of objects defining the elements that will represent the red decoder glasses. Each object has the following optional properties:
 
@@ -76,6 +76,6 @@ The options object for the redEncoder method has the same optional key-value pai
 
 To see a working demo, download this repository, and then be sure to copy or download jQuery and jQuery UI to the same directory. The script will then be applied when you open demo.html.
 
-##License
+## License
 
 redDecoder is available for use under the MIT license.
