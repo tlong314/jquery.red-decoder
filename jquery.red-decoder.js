@@ -34,18 +34,20 @@
 				},
 				canvases: []
 			},
-			opts = $.extend(defaults, options);
+			opts = $.extend(defaults, options),
+			$redDiv = $(opts.glass.element);
 
-		var $redDiv = $(opts.glass.element);
 		if(!$redDiv.length) { // If no element was passed in or defined, create one.
-			var $redDiv = $("<div></div>").addClass("jq-red-decoder-glass");
+			$redDiv = $("<div></div>").addClass("jq-red-decoder-glass");
 			$("body").append($redDiv);
 		}
 
 		$redDiv.css(opts.glass.css);
-		
+
 		if(!opts.glass.css.borderRadius && !opts.glass.css["border-radius"]) {
-			$redDiv.css("border-radius", Math.ceil($redDiv.width() / 2 + parseFloat($redDiv.css("border-width").replace("px", ""), 10)) + "px");
+			$redDiv.css("border-radius",
+				Math.ceil($redDiv.width() / 2 +
+					parseFloat($redDiv.css("border-width").replace("px", ""), 10)) + "px");
 		}
 
 		$redDiv.draggable();
@@ -67,7 +69,7 @@
 		// If multiple HTML canvases are passed in, create a camouflaged message from each one.
 		if(this.length > 1) {
 			return this.each(function(){
-				$(this).redDecoder(options);
+				$(this).redEncoder(options);
 			});
 		}
 
@@ -105,8 +107,11 @@
 			$canvas = $(opts.element);
 		}
 
-		$canvas.attr("width", width).attr("height", height).css(opts.css);
-		ctx = $canvas[0].getContext("2d");
+		$canvas.attr("width", width)
+			.attr("height", height)
+			.css(opts.css);
+
+		ctx = $canvas.get(0).getContext("2d");
 		ctx.font = opts.font;
 
 		// Draw red spots and letters.
@@ -171,8 +176,11 @@
 		while(splotchNum--) {
 			var x = Math.random() * width,
 				y = Math.random() * height;
-			
-			ctx.fillText(alphabet[Math.floor(Math.random()*2)][Math.floor(Math.random()*26)], x, y);
+
+			// Fill area with random letters to further obscure hidden message
+			ctx.fillText(
+				alphabet[Math.floor(Math.random()*2)][Math.floor(Math.random()*26)],
+				x, y);
 		}
 
 		// Write hidden blue message.
@@ -184,23 +192,27 @@
 				text = message.text || "",
 				position = message.position
 				font = message.font || "14px Times New Roman";
-			
+
 			// Define random x-y values for the text if they have not been set.
 			if(!position) {
 				position = {};
 			}
-			
+
 			if(!position.x) {
-				position.x = Math.max(Math.random() * (width - (opts.messages[m].text.length - 1) * 14), 0); // Rough estimate to keep text on the canvas.
-			}
-			
-			if(!position.y) {
-				position.y = 20 + Math.random() * (height - 20); // Rough estimate to keep text on the canvas.
+				// Rough estimate to keep text on the canvas.
+				position.x = Math.max(Math.random() *
+					(width - (opts.messages[m].text.length - 1) * 14), 0);
 			}
 
-			ctx.fillText(opts.messages[m].text.split("").join(" "), Math.round(position.x), Math.round(position.y));
+			if(!position.y) {
+				// Rough estimate to keep text on the canvas.
+				position.y = 20 + Math.random() * (height - 20);
+			}
+
+			ctx.fillText(opts.messages[m].text.split("").join(" "),
+				Math.round(position.x), Math.round(position.y));
 		}
-		
+
 		return this;
 	}; 
 }());
